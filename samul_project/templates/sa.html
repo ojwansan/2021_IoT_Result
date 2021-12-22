@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사물</title>
+</head>
+<body>
+  <!--텍스트-->
+  <h1>알람이 울려요</h1>
+  <p>울리는 시간을 입력하세요.</p>
+  <!--시간 입력 받아서 전달-->
+  <form action="\timer" method="post" class="input-form">
+    <input type="number" id="inptime" name="inptime" value="0" placeholder="시간" min = "0" onkeydown="printt(this)"/> 시간
+    <input type="number" id="inpmin" name="inpmin" value="0" placeholder="분" min = "0" max = "59" maxlength="2" onkeydown="printt(this)" oninput="maxLengthCheck(this)"/> 분
+    <input type="number" id="inpsec" name="inpsec" value="0" placeholder="초" min = "0" max = "59" maxlength="2" onkeydown="printt(this)" oninput="maxLengthCheck(this)"/> 초 후에 알람이 울리게 됩니다.
+    <br>
+    <input type='submit' value="입력">
+    <div id = "result"></div>
+  </form>
+</body>
+<script>
+  //입력받은 시간 표시
+  function printt(){
+    var inptime = Number(document.getElemntById("inptime").value);
+    var inpmin = Number(document.getElementById("inpmin").value);
+    var inpsec = Number(document.getElementById("inpsec").value);
+    document.getElementById("result").innerHTML = "<h1>" + inptime + "시간" + inpmin + "분" + inpsec +"초"+"후에 알람이 울립니다." + "</h1>"
+  }
+  //입력 길이 제한
+  function maxLengthCheck(object){
+    if (object.value.length > object.maxLength){
+      object.value = object.value.slice(0, object.maxLength);
+    }
+  }    
+</script>
+</html>
